@@ -14,4 +14,4 @@ $(HOME)/.luarocks/bin/moonc:
 	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
 
 test: ready
-	nginx/start
+	@nginx/start
