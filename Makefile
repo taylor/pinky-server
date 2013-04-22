@@ -10,7 +10,7 @@ deps: deps_$(SYSTEM)
 	@true
 
 deps_Linux:
-	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua libmemcached-dev
+	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua libmemcached-dev libsasl2-dev
 
 deps_Darwin:
 	@true
