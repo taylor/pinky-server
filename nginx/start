@@ -11,3 +11,4 @@ env PATH="$PATH" LUA_PATH="$LUA_PATH" nginx -p `pwd`/nginx/ -c nginx.conf
 { sleep 3; curl -s http://localhost:8080/test; } &
 wait
 cat nginx/logs/error.log
+nginx -p `pwd`/nginx/ -c nginx.conf -s stop || true
