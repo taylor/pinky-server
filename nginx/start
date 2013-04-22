@@ -5,7 +5,7 @@ export LUA_PATH="$HOME/.luarocks/share/lua/5.1/?.lua;;"
 
 rm -f nginx/logs/error.log
 nginx -p `pwd`/nginx/ -c nginx.conf -s stop || true
-nginx -p `pwd`/nginx/ -c nginx.conf
+env PATH="$PATH" LUA_PATH="$LUA_PATH" nginx -p `pwd`/nginx/ -c nginx.conf
 { sleep 1; curl -s http://localhost:8080/test; } &
 { sleep 2; curl -s http://localhost:8080/test; } &
 { sleep 3; curl -s http://localhost:8080/test; } &
