@@ -24,7 +24,7 @@ $(HOME)/.luarocks/bin/moonc:
 	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
 
 $(HOME)/.luarocks/bin/pinky:
-	@cd vendor/projects/pinky && luarocks make --local
+	@cd vendor/projects/pinky && luarocks make --local pinky-0.1-0.rockspec
 
 test: ready
 	@nginx/start
