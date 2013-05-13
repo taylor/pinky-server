@@ -2,7 +2,7 @@ ACCEL_HOME := $(shell pwd)
 SYSTEM := $(shell uname -s)
 default: ready
 
-ready: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/moonc
+ready: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/moonc $(HOME)/.luarocks/bin/pinky
 	@./build
 	@luarocks make --local
 
@@ -22,6 +22,9 @@ ngx_openresty/nginx/sbin/nginx:
 
 $(HOME)/.luarocks/bin/moonc:
 	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
+
+$(HOME)/.luarocks/bin/pinky:
+	@cd vendor/projects/pinky && luarocks make --local
 
 test: ready
 	@nginx/start
