@@ -4,7 +4,7 @@ default: ready
 
 ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/moonc $(HOME)/.luarocks/bin/pinky
 	@./build
-	@luarocks make --local
+	@luarocks make --local YAML_LIBDIR=/usr/lib/x86_64-linux-gnu
 
 deps: deps_$(SYSTEM)
 	@true
@@ -13,7 +13,7 @@ submodule:
 	@git submodule update --init --recursive
 
 deps_Linux:
-	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua libmemcached-dev libsasl2-dev
+	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua libmemcached-dev libsasl2-dev libyaml-0-2 lib libmysqlclient-dev
 
 deps_Darwin:
 	@true
