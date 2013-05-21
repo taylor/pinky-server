@@ -30,7 +30,7 @@ $(HOME)/.luarocks/bin/pinky: submodule
 	@cd vendor/projects/pinky && luarocks make MYSQL_INCDIR=/usr/include/mysql/ YAML_LIBDIR=/usr/lib/x86_64-linux-gnu --local pinky-0.1-0.rockspec
 
 copy_rocks: $(HOME)/.luarocks/bin/pinky
-	@rsync -avs $(HOME)/.luarocks $(ACCEL_HOME)/.luarocks
+	@rsync -avs $(HOME)/.luarocks/ $(ACCEL_HOME)/.luarocks
 
 test: ready
 	@nginx/start
