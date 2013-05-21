@@ -4,7 +4,7 @@ default: ready
 
 ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/moonc $(HOME)/.luarocks/bin/pinky
 	@./build
-	@luarocks make --local YAML_LIBDIR=/usr/lib/x86_64-linux-gnu
+	@luarocks make --local
 
 deps: deps_$(SYSTEM)
 	@true
@@ -26,8 +26,8 @@ ngx_openresty/nginx/sbin/nginx:
 $(HOME)/.luarocks/bin/moonc:
 	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
 
-$(HOME)/.luarocks/bin/pinky: submodule
-	@cd vendor/projects/pinky && luarocks make --local pinky-0.1-0.rockspec
+$(HOME)/.luarocks/bin/pinky:
+	@cd vendor/projects/pinky && luarocks make MYSQL_INCDIR=/usr/include/mysql/ YAML_LIBDIR=/usr/lib/x86_64-linux-gnu --local pinky-0.1-0.rockspec
 
 test: ready
 	@nginx/start
