@@ -13,7 +13,7 @@ submodule:
 	@git submodule update --init --recursive
 
 deps_Linux:
-	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua libmemcached-dev libsasl2-dev libyaml-0-2 lib libmysqlclient-dev
+	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua5.1 libmemcached-dev libsasl2-dev libyaml-0-2 libmysqlclient-dev
 
 deps_Darwin:
 	@true
