@@ -2,7 +2,7 @@ ACCEL_HOME := $(shell pwd)
 SYSTEM := $(shell uname -s)
 default: ready
 
-ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/moonc $(HOME)/.luarocks/bin/pinky copy_rocks
+ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky copy_rocks
 	@./build
 	@luarocks make --local
 
