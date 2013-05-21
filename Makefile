@@ -24,7 +24,7 @@ ngx_openresty/nginx/sbin/nginx:
 	@cd vendor/projects/ngx_openresty && make install
 
 $(HOME)/.luarocks/bin/moonc:
-	@luarocks build --tree $(ACCEL_HOME) vendor/projects/moonscript-0.2.3-2.rockspec
+	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
 
 $(HOME)/.luarocks/bin/pinky: submodule
 	@cd vendor/projects/pinky && luarocks make MYSQL_INCDIR=/usr/include/mysql/ YAML_LIBDIR=/usr/lib/x86_64-linux-gnu --local pinky-0.1-0.rockspec
