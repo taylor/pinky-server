@@ -1,5 +1,8 @@
 ACCEL_HOME := $(shell pwd)
 SYSTEM := $(shell uname -s)
+MYSQL_INCDIR := "/usr/include/mysql/"
+YAML_LIBDIR := "/usr/lib/x86_64-linux-gnu"
+
 default: ready
 
 ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc copy_rocks
@@ -27,7 +30,7 @@ $(HOME)/.luarocks/bin/moonc:
 	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
 
 $(HOME)/.luarocks/bin/pinky: submodule
-	@cd vendor/projects/pinky && luarocks make MYSQL_INCDIR=/usr/include/mysql/ YAML_LIBDIR=/usr/lib/x86_64-linux-gnu --local pinky-0.1-0.rockspec
+	@cd vendor/projects/pinky && luarocks make MYSQL_INCDIR=$(MYSQL_INCDIR) YAML_LIBDIR=$(YAML_LIBDIR) --local pinky-0.1-0.rockspec
 
 copy_rocks: $(HOME)/.luarocks/bin/pinky
 	@rsync -avs $(HOME)/.luarocks/ $(ACCEL_HOME)/.luarocks
