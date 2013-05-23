@@ -11,3 +11,4 @@ tmp
 /vendor/projects/ngx_openresty-1.2.7.6/build/
 /vendor/bundle
 /.bundle
+/.luarocks
