@@ -22,7 +22,7 @@ deps_Darwin:
 	@true
 
 ngx_openresty/nginx/sbin/nginx:
-	@cd vendor/projects/ngx_openresty && PATH="/sbin:$(PATH)" ./configure --prefix=$(ACCEL_HOME)/ngx_openresty --with-luajit --with-ld-opt=-L$(HOME)/local/lib --with-debug
+	@cd vendor/projects/ngx_openresty && PATH="/sbin:$(PATH)" ./configure --prefix=$(ACCEL_HOME)/ngx_openresty --with-luajit --with-ld-opt=-L$(HOME)/local/lib --with-ld-opt=-L/usr/local/Cellar/pcre/8.21/lib --with-debug
 	@cd vendor/projects/ngx_openresty && make
 	@cd vendor/projects/ngx_openresty && make install
 
