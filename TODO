@@ -1,1 +1,3 @@
-aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks
+With MacPorts installed to ~/local/lib:
+
+make YAML_LIBDIR=~/local/lib MYSQL_INCDIR=~/local/include/mysql51/mysql
