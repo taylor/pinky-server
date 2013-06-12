@@ -5,7 +5,7 @@ YAML_LIBDIR := "/usr/lib/x86_64-linux-gnu"
 
 default: ready
 
-ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc copy_rocks
+ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc
 	@./build
 	@luarocks make --local
 
