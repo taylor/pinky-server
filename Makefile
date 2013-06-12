@@ -9,12 +9,16 @@ ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.
 	@./build
 	@luarocks make --local
 
-pinky-server: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc
+pinky-server: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc restart
 	@./build
 	@luarocks make --local
 
 deps: deps_$(SYSTEM)
 	@true
+
+restart:
+	@./nginx/stop; ./nginx/start
+
 
 submodule:
 	@git submodule update --init --recursive
