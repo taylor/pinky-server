@@ -9,6 +9,10 @@ ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.
 	@./build
 	@luarocks make --local
 
+pinky-server: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc copy_rocks
+	@./build
+	@luarocks make --local
+
 deps: deps_$(SYSTEM)
 	@true
 
