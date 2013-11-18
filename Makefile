@@ -2,11 +2,12 @@ ACCEL_HOME := $(shell pwd)
 SYSTEM := $(shell uname -s)
 
 ifeq ($(SYSTEM),Linux)
-	ifeq ($(shell grep Ubuntu /etc/issue),Ubuntu)
+	ifeq ($(shell grep -ic Ubuntu /etc/issue),1)
 		DISTRO := Ubuntu
 		YAML_LIBDIR := "/usr/lib/x86_64-linux-gnu"
 		MYSQL_INCDIR := "/usr/include/mysql/"
-	else ($(shell grep Centos /etc/issue),Ubuntu)
+	endif
+	ifeq ($(shell grep -ic Centos /etc/issue),1)
 		DISTRO := Centos
 		YAML_LIBDIR := "/usr/lib64"
 		MYSQL_INCDIR := "/usr/include/mysql/"
@@ -37,7 +38,7 @@ deps_Centos:
 	@sudo yum install -y readline-devel memcached-devel mysql-devel openssl-devel pcre-devel perl luarocks lua lua-devel ncurses-devel mysql libyaml-devel
 
 deps_Ubuntu:
-	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua5.1 libmemcached-dev libsasl2-dev libyaml-0-2 libmysqlclient-dev
+	@sudo apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua5.1 libmemcached-dev libsasl2-dev libyaml-0-2 libmysqlclient-dev
 
 deps_Linux: deps_$(DISTRO)
 
