@@ -32,7 +32,7 @@ submodule:
 	@git submodule update --init --recursive
 
 deps_Centos:
-	@sudo yum install -y readline-devel memcached-devel mysql-devel openssl-devel pcre-devel perl luarocks lua
+	@sudo yum install -y readline-devel memcached-devel mysql-devel openssl-devel pcre-devel perl luarocks lua lua-devel
 
 deps_Ubuntu:
 	@sudo aptitude install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua5.1 libmemcached-dev libsasl2-dev libyaml-0-2 libmysqlclient-dev
