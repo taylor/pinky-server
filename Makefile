@@ -13,6 +13,12 @@ ifeq ($(SYSTEM),Linux)
 		MYSQL_INCDIR := "/usr/include/mysql/"
 		MYSQL_LIBDIR := "/usr/lib64/mysql/"
 	endif
+	ifeq ($(shell grep -ic Gentoo /etc/inittab),3)
+		DISTRO := Gentoo
+		YAML_LIBDIR := "/usr/lib64"
+		MYSQL_INCDIR := "/usr/include/mysql/"
+		MYSQL_LIBDIR := "/usr/lib64/mysql/"
+	endif
 endif
 
 default: ready
@@ -36,6 +42,9 @@ submodule:
 
 deps_Centos:
 	@sudo yum install -y readline-devel memcached-devel mysql-devel openssl-devel pcre-devel perl luarocks lua lua-devel ncurses-devel mysql libyaml-devel
+
+deps_Gentoo:
+	@sudo emerge dev-libs/libyaml
 
 deps_Ubuntu:
 	@sudo apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua5.1 libmemcached-dev libsasl2-dev libyaml-0-2 libmysqlclient-dev
