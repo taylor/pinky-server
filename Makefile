@@ -24,11 +24,9 @@ endif
 default: ready
 
 ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky copy_rocks
-	@./build
 	@luarocks make --local
 
 pinky-server: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky restart
-	@./build
 	@luarocks make --local
 
 deps: deps_$(SYSTEM)
