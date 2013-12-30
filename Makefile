@@ -23,11 +23,11 @@ endif
 
 default: ready
 
-ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc copy_rocks
+ready: deps ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky copy_rocks
 	@./build
 	@luarocks make --local
 
-pinky-server: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky $(HOME)/.luarocks/bin/moonc restart
+pinky-server: ngx_openresty/nginx/sbin/nginx $(HOME)/.luarocks/bin/pinky restart
 	@./build
 	@luarocks make --local
 
@@ -58,9 +58,6 @@ ngx_openresty/nginx/sbin/nginx:
 	@cd vendor/projects/ngx_openresty && PATH="/sbin:$(PATH)" ./configure --prefix=$(ACCEL_HOME)/ngx_openresty --with-luajit --with-ld-opt=-L$(HOME)/local/lib --with-ld-opt=-L/usr/local/Cellar/pcre/8.32/lib --with-debug
 	@cd vendor/projects/ngx_openresty && make
 	@cd vendor/projects/ngx_openresty && make install
-
-$(HOME)/.luarocks/bin/moonc:
-	@luarocks build --local vendor/projects/moonscript-0.2.3-2.rockspec
 
 $(HOME)/.luarocks/bin/pinky: submodule
 	@cd vendor/projects/pinky && luarocks make MYSQL_LIBDIR=$(MYSQL_LIBDIR) MYSQL_INCDIR=$(MYSQL_INCDIR) YAML_LIBDIR=$(YAML_LIBDIR) --local pinky-0.1-0.rockspec
