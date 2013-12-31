@@ -6,6 +6,7 @@
 set -e
 
 function read_install_questions() {
+    INSTALL_DIR="${PWD}"
     # echo "This will build and install Pinky Server"
     # echo -n "Where would you like to install pinky-server? "
     # read  INSTALL_DIR
@@ -17,12 +18,11 @@ function read_install_questions() {
     #     echo "Exiting"
     #     exit 2
     # fi
-    echo "XXX: Installing to ${PWD}/pinky-server"
-    echo "XXX: If you do not want this to happen then"
-    echo "Control C now!"
+    echo "Installing to ${INSTALL_DIR}"
+    echo "If you do not want this to happen then Control C now!"
     echo "sleeping 10 seconds"
     sleep 10
-    INSTALL_DIR="${PWD}"
+    echo "OK: Installing to ${INSTALL_DIR}"
 }
 
 function do_install() {
