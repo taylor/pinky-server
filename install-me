@@ -9,10 +9,10 @@ OPWD="$PWD"
 
 function read_install_questions() {
     echo "This will build and install Pinky Server"
-    echo "Where would you like to install pinky-server?"
-    read -n INSTALL_DIR
-    echo "Proceed with build? (y/n)"
-    read -n YON
+    echo -n "Where would you like to install pinky-server? "
+    read  INSTALL_DIR
+    echo -n "Proceed with build? (y/n) "
+    read  YON
     if [[ "$YON" == "y" || "$YON" == "yes" || "$YON" == "YES"  ]]; then
         echo "OK..."
     else
