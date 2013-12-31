@@ -18,11 +18,11 @@ function read_install_questions() {
     #     echo "Exiting"
     #     exit 2
     # fi
-    echo "Installing to ${INSTALL_DIR}"
+    echo "Installing to ${INSTALL_DIR}/pinky-server"
     echo "If you do not want this to happen then Control C now!"
     echo "sleeping 10 seconds"
     sleep 10
-    echo "OK: Installing to ${INSTALL_DIR}"
+    echo "OK: Installing to ${INSTALL_DIR}/pinky-server"
 }
 
 function do_install() {
