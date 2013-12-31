@@ -27,7 +27,7 @@ function read_install_questions() {
 
 function do_install() {
     git clone http://github.com/ober/pinky-server && \
-    cd ./pinky-server && \
+    cd ${INSTALL_DIR}/pinky-server && \
     make 2>&1 && \
     useradd -s /bin/false -d "${INSTALL_DIR}"/pinky-server pinky;
     chown -R pinky:pinky "${INSTALL_DIR}"/pinky-server && \
