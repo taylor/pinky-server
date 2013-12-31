@@ -13,7 +13,7 @@ function read_install_questions() {
     read -n INSTALL_DIR
     echo "Proceed with build? (y/n)"
     read -n YON
-    if [[ "$Y" == "y" || "$Y" == "yes" || "$Y" == "YES"  ]]; then
+    if [[ "$YON" == "y" || "$YON" == "yes" || "$YON" == "YES"  ]]; then
         echo "OK..."
     else
         echo "Exiting"
@@ -51,4 +51,4 @@ function main(){
     read_install_questions && do_install
 }
 
-main
+mainPP
