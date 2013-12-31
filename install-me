@@ -17,7 +17,7 @@ function read_install_questions() {
         echo "OK..."
     else
         echo "Exiting"
-        exit(2)
+        exit 2
     fi
 }
 
