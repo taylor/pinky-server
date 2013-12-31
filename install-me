@@ -29,7 +29,7 @@ function do_install() {
     git clone http://github.com/ober/pinky-server && \
     cd ./pinky-server && \
     make 2>&1 && \
-    useradd -s /bin/false -d "${INSTALL_DIR}"/pinky-server pinky && \
+    useradd -s /bin/false -d "${INSTALL_DIR}"/pinky-server pinky;
     chown -R pinky:pinky "${INSTALL_DIR}"/pinky-server && \
     su -s /bin/bash -c "cd ~/vendor/projects/pinky && \
       git checkout master && \
