@@ -5,20 +5,20 @@
 #
 set -e
 
-OPWD="$PWD"
-
 function read_install_questions() {
-    echo "This will build and install Pinky Server"
-    echo -n "Where would you like to install pinky-server? "
-    read  INSTALL_DIR
-    echo -n "Proceed with build? (y/n) "
-    read  YON
-    if [[ "$YON" == "y" || "$YON" == "yes" || "$YON" == "YES"  ]]; then
-        echo "OK..."
-    else
-        echo "Exiting"
-        exit 2
-    fi
+    # echo "This will build and install Pinky Server"
+    # echo -n "Where would you like to install pinky-server? "
+    # read  INSTALL_DIR
+    # echo -n "Proceed with build? (y/n) "
+    # read  YON
+    # if [[ "$YON" == "y" || "$YON" == "yes" || "$YON" == "YES"  ]]; then
+    #     echo "OK..."
+    # else
+    #     echo "Exiting"
+    #     exit 2
+    # fi
+    echo "Installing to current directory"
+    INSTALL_DIR="${PWD}"
 }
 
 function do_install() {
