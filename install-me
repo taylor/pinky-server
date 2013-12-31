@@ -1,9 +1,9 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #
 # Installer for Pinky-server to the directory where it's called.
 #
-set -e
+set +e
 
 function read_install_questions() {
     INSTALL_DIR="${PWD}"
