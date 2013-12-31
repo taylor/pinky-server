@@ -50,3 +50,5 @@ function update_pinky() {
 function main(){
     read_install_questions && do_install
 }
+
+main
