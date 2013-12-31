@@ -1,0 +1,7 @@
+#!/bin/bash
+
+#
+# Installer for Pinky-server to the directory where it's called.
+#
+
+git clone http://github.com/ober/pinky-server && cd ./pinky-server && make 2>&1
