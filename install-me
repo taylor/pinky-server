@@ -4,7 +4,7 @@
 # Installer for Pinky-server to the directory where it's called.
 #
 
-OPWD="$(PWD)"
+OPWD="$PWD"
 
 git clone http://github.com/ober/pinky-server && \
     cd ./pinky-server && \
