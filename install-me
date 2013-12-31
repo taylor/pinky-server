@@ -4,4 +4,17 @@
 # Installer for Pinky-server to the directory where it's called.
 #
 
-git clone http://github.com/ober/pinky-server && cd ./pinky-server && make 2>&1
+OPWD="$(PWD)"
+
+git clone http://github.com/ober/pinky-server && \
+    cd ./pinky-server && \
+    make 2>&1 && \
+    useradd -s /bin/false -d "${OPWD}"/pinky-server pinky && \
+    chown -R pinky:pinky "${OPWD}"/pinky-server && \
+    su -s /bin/bash -c "cd ~/vendor/projects/pinky && \
+      git checkout master && \
+      git fetch && \
+      git reset --hard origin/master && \
+      luarocks make --local ./pinky-0.1-0.rockspec && \
+      cd ~ && ./nginx/stop && ./nginx/start" pinky && \
+      curl http://localhost:44444/pinky/disk
