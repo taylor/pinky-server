@@ -51,4 +51,4 @@ function main(){
     read_install_questions && do_install
 }
 
-mainPP
+main
