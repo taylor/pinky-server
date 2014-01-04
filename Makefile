@@ -6,14 +6,12 @@ ifeq ($(SYSTEM),Linux)
 		DISTRO := Ubuntu
 		YAML_LIBDIR := "/usr/lib/x86_64-linux-gnu"
 		MYSQL_INCDIR := "/usr/include/mysql/"
-	endif
-	ifeq ($(shell grep -ic Centos /etc/issue),1)
+	else ifeq ($(shell grep -ic Centos /etc/issue),1)
 		DISTRO := Centos
 		YAML_LIBDIR := "/usr/lib64"
 		MYSQL_INCDIR := "/usr/include/mysql/"
 		MYSQL_LIBDIR := "/usr/lib64/mysql/"
-	endif
-	ifeq ($(shell grep -ic Gentoo /etc/inittab),3)
+	else ifeq ($(shell grep -ic Gentoo /etc/inittab),3)
 		DISTRO := Gentoo
 		YAML_LIBDIR := "/usr/lib64"
 		MYSQL_INCDIR := "/usr/include/mysql/"
