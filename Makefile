@@ -1,4 +1,4 @@
-ACCEL_HOME := $(shell pwd)
+PINKY_HOME := $(shell pwd)
 SYSTEM := $(shell uname -s)
 
 ifeq ($(SYSTEM),Linux)
@@ -53,7 +53,7 @@ deps_Darwin:
 	@true
 
 ngx_openresty/nginx/sbin/nginx:
-	@cd vendor/projects/ngx_openresty && PATH="/sbin:$(PATH)" ./configure --prefix=$(ACCEL_HOME)/ngx_openresty --with-luajit --with-ld-opt=-L$(HOME)/local/lib --with-ld-opt=-L/usr/local/Cellar/pcre/8.32/lib --with-debug
+	@cd vendor/projects/ngx_openresty && PATH="/sbin:$(PATH)" ./configure --prefix=$(PINKY_HOME)/ngx_openresty --with-luajit --with-ld-opt=-L$(HOME)/local/lib --with-ld-opt=-L/usr/local/Cellar/pcre/8.32/lib --with-debug
 	@cd vendor/projects/ngx_openresty && make
 	@cd vendor/projects/ngx_openresty && make install
 
@@ -61,7 +61,7 @@ $(HOME)/.luarocks/bin/pinky: submodule
 	@cd vendor/projects/pinky && luarocks make MYSQL_LIBDIR=$(MYSQL_LIBDIR) MYSQL_INCDIR=$(MYSQL_INCDIR) YAML_LIBDIR=$(YAML_LIBDIR) --local pinky-0.1-0.rockspec
 
 copy_rocks: $(HOME)/.luarocks/bin/pinky
-	@rsync -av $(HOME)/.luarocks/ $(ACCEL_HOME)/.luarocks
+	@rsync -av $(HOME)/.luarocks/ $(PINKY_HOME)/.luarocks
 
 test: ready
 	@nginx/start
