@@ -13,15 +13,12 @@ ifeq ($(SYSTEM),Linux)
 		MYSQL_INCDIR := "/usr/include/mysql/"
 		MYSQL_LIBDIR := "/usr/lib64/mysql/"
 	endif
-	if [ -a /etc/inittab];
-	then
-		ifeq ($(shell grep -ic Gentoo /etc/inittab),3)
-			DISTRO := Gentoo
-			YAML_LIBDIR := "/usr/lib64"
-			MYSQL_INCDIR := "/usr/include/mysql/"
-			MYSQL_LIBDIR := "/usr/lib64/mysql/"
-		endif
-	fi
+	ifeq ($(shell grep -ic Gentoo /etc/inittab),3)
+		DISTRO := Gentoo
+		YAML_LIBDIR := "/usr/lib64"
+		MYSQL_INCDIR := "/usr/include/mysql/"
+		MYSQL_LIBDIR := "/usr/lib64/mysql/"
+	endif
 endif
 
 default: ready
