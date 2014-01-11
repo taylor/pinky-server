@@ -11,11 +11,16 @@ ifeq ($(SYSTEM),Linux)
 		YAML_LIBDIR := "/usr/lib64"
 		MYSQL_INCDIR := "/usr/include/mysql/"
 		MYSQL_LIBDIR := "/usr/lib64/mysql/"
-	else ifeq ($(shell grep -ic Gentoo /etc/inittab),3)
+	else ifeq ($([[ -f /etc/inittab ]] && shell grep -ic Gentoo /etc/inittab),3)
 		DISTRO := Gentoo
 		YAML_LIBDIR := "/usr/lib64"
 		MYSQL_INCDIR := "/usr/include/mysql/"
 		MYSQL_LIBDIR := "/usr/lib64/mysql/"
+	else ifeq ($(shell grep -ic DISTRIB_ID=Arch /etc/lsb-release),1)
+		DISTRO := Arch
+		YAML_LIBDIR := "/usr/lib"
+		MYSQL_INCDIR := "/usr/include/mysql/"
+		MYSQL_LIBDIR := "/usr/lib"
 	endif
 endif
 
@@ -44,6 +49,9 @@ deps_Gentoo:
 
 deps_Ubuntu:
 	@sudo apt-get install -y libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl luarocks luajit lua5.1 libmemcached-dev libsasl2-dev libyaml-0-2 libmysqlclient-dev
+
+deps_Arch:
+	@sudo pacman -S libmysqlclient libyaml libmemcached readline lua luarocks ncurses openssl
 
 deps_Linux: deps_$(DISTRO)
 
